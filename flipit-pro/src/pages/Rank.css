@@ -1,0 +1,198 @@
+/* 전체 영역 */
+.rank-frame {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 2.5rem 0;
+}
+
+.rank-frame-container {
+    width: 100%;
+    max-width: 1228px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0 1rem;
+}
+
+/* User Rank Section (전체 초록색 배경) */
+.user-rank-section {
+    background-color: #e0f2e9;
+    border-radius: 2rem;
+    padding: 0.1rem 2rem 2rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.user-rank-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.user-rank-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #6b6969;
+}
+
+/* Refresh Button */
+.refresh-button {
+    padding: 0.5rem 1.5rem;
+    background-color: #608552;
+    color: white;
+    font-weight: 800;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+.refresh-button:hover {
+    opacity: 0.8;
+}
+
+/* Rank List Header (흰색 배경 제거) */
+.rank-list-header {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 2fr;
+    padding: 1rem;
+    font-weight: 800;
+    color: #6b6969;
+    margin-bottom: 0;
+}
+
+/* User Rank List (목록 아이템 흰색 배경, min-height 추가) */
+.user-rank-list {
+    background-color: white; 
+    border-radius: 1.5rem; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* 데이터가 없어도 박스가 보이도록 min-height 추가 */
+}
+
+/* Rank List Items */
+.rank-list-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 2fr;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4b4b4b;
+    border-bottom: 1px solid rgba(107,105,105,0.1);
+}
+
+.rank-number .fa-icon,
+.rank-number svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* 컬럼 안 내용 가운데 정렬 */
+.rank-list-header,
+.rank-list-item,
+.my-rank-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 2fr;
+    padding: 0.5rem;
+    justify-items: center; /* 여기 추가 */
+    align-items: center;   /* 세로도 가운데 정렬 */
+}
+
+
+.rank-list-item:last-child {
+    border-bottom: none;
+}
+
+/* My Rank Section (아래 섹션 초록색 배경) */
+.my-rank-section {
+    background-color: #d9efd9;
+    border-radius: 2rem;
+    padding: 0.1rem 2rem 2rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.my-rank-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #6b6969;
+    margin-bottom: 1rem;
+}
+
+/* My Rank List Container (흰색 배경 컨테이너 역할) */
+.my-rank-list-container {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    min-height: 4rem; /* 데이터가 없어도 박스가 보이도록 최소 높이 지정 */
+}
+
+/* My Rank Item (실제 데이터 행) */
+.my-rank-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 2fr;
+    padding: 1rem;
+    font-size: 1.125rem;
+    color: #4b4b4b;
+    font-weight: 800;
+}
+
+
+.rank-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0px;
+  margin: 16px 0;
+}
+
+.triangle-icon {
+  font-size: 32px;
+  color: #4a8560;
+  transition: color 0.2s;
+}
+
+.triangle-icon.prev-icon {
+  --rotate: 180deg; /* 왼쪽 버튼 회전 각도 */
+  transform: rotate(var(--rotate)) ; /* 기본 회전 유지 */
+}
+.triangle-btn:hover .triangle-icon {
+  color: #22c55e;
+}
+
+.rank-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.triangle-btn {
+  background: none; /* 배경은 버튼에서 처리 가능 */
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.triangle-btn {
+  background: none;   /* 배경 제거 */
+  border: none;       /* 테두리 제거 */
+  cursor: pointer;
+  outline: none;      /* 클릭 후 포커스 outline 제거 */
+}
+
+.triangle-btn:focus {
+  outline: none;      /* 포커스시 나오는 검은 테두리 제거 */
+}
+
+.triangle-btn:active .triangle-icon {
+   transform: rotate(var(--rotate, 0deg)) scale(0.9);
+}
+
+.my-rank-empty {
+  text-align: center;       /* 가로 가운데 */
+  margin: 1rem 0;           /* 위/아래 여백 */
+  display: block;
+  font-size: 1.5rem;      /* 기본 block 유지 */
+  font-weight: 900;
+}

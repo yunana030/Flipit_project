@@ -1,0 +1,204 @@
+/* Game 페이지 전체 wrapper */
+.game-page {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* 가로 중앙 */
+  padding: 2rem 0;          /* 상단, 하단 여백 통일 */
+  box-sizing: border-box;
+  min-height: calc(100vh - 160px); /* 헤더 높이만큼 빼고 최소 높이 확보 */
+}
+
+/* 전체 컨테이너 */
+.box-container {
+  display: flex;
+  justify-content: center; /* 가로 중앙 */
+  width: 100%;
+  max-width: 1327px;       /* 기존 box-fixed width */
+  gap: 19px;               /* 사이드바와 게임보드 간격 */
+  box-sizing: border-box;
+}
+
+/* 고정 제거, 유동적으로 flex 배치 */
+.box-fixed {
+  display: flex;
+  width: 100%;
+  /* gap: 19px; */
+}
+
+/* 사이드바 */
+.sidebar {
+  width: 232px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Stats와 Items 패널 사이 간격 */
+
+  transform: scale(0.75);
+  transform-origin: top left;
+}
+
+/* 공통 패널 구조 */
+.panel-section {
+  position: relative;
+  width: 228px;
+  height: 309px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px; /* 타이틀 위 여백 */
+  box-sizing: border-box;
+}
+
+/* 배경 박스 */
+.panel-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #d5edff; /* Stats 기본색 */
+  border-radius: 24px;
+  z-index: -1;
+}
+
+/* Items Panel 배경색만 별도 */
+.items-bg {
+  background-color: #fff3d5; /* 약한 주황색 */
+}
+
+/* 타이틀 */
+.panel-title {
+  font-weight: 800;
+  font-size: 1.7rem;
+  color: black;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 3px;
+}
+
+/* 리스트 (Stats 아이템 / Items 버튼) */
+.panel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;          
+  width: 100%;
+  align-items: center; 
+  flex-grow: 1;        
+  justify-content: flex-start;
+}
+
+/* 개별 아이템 박스 */
+.panel-item {
+  width: 181px;
+  height: 64px;
+  background-color: white;
+  border-radius: 16px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(68, 68, 68);
+  gap: 15px;
+}
+
+/* Stats 라벨과 값 분리용 span */
+.label-text {
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.value-text {
+  padding-top: 2px;
+  color: rgb(17, 17, 17);
+}
+
+/* Main Game Board */
+.main-board {
+  flex: 1;              /* 사이드바 남은 공간 다 사용 */
+  width: 1000px;    /* 기존 카드 리스트 영역 유지 */
+  max-height: 800px;
+  /* border: 1px solid black; */
+background-image: url("/images/게임배경2.jpg");
+
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+
+}
+
+/* 공통: 기본 panel-item (스탯 패널용) */
+.panel-item {
+  width: 181px;
+  height: 64px;
+  background-color: white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(68, 68, 68);
+  gap: 1rem;
+}
+
+.panel-item:hover {
+  transform: scale(1.05);                /* 살짝 확대 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 그림자 추가 */
+}
+
+/* Items Panel 전용 (세로 아이콘 + 호버) */
+.panel-section .items-bg + .panel-title + .panel-list .panel-item {
+  flex-direction: column;      
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  font-size: 1rem; /* 텍스트 조금 작게 */
+}
+
+/* 아이콘 크기 별도 지정 (JSX에서) */
+.panel-section .items-bg + .panel-title + .panel-list .panel-item svg {
+  width: 24px;  /* 기존 28px → 24px로 축소 */
+  height: 24px;
+}
+
+
+/* 로그인 버튼 */
+.main-board {
+  display: flex;
+  align-items: center;    /* 세로 중앙 */
+  justify-content: center; /* 가로 중앙 */
+  position: relative;     /* 필요하면 자식 절대 위치 요소를 위해 */
+  width: 100%;
+  height: 100%;
+}
+
+.start-button {
+  all: unset;
+  box-sizing: border-box;
+  width: 200px;
+  height: 80px;
+  background-color: #1ea958;
+  color: #fff;
+  font-weight: 900;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.panel-item.used {
+  color: gray;          /* 사용 후 회색 */
+  cursor: not-allowed;  /* 클릭 못하게 보이도록 */
+  opacity: 0.6;         /* 살짝 흐리게 */
+}
+.panel-item.used:hover {
+  transform: none;     /* 확대 효과 제거 */
+  box-shadow: none;    /* 그림자 효과 제거 */
+  cursor: not-allowed; /* 클릭 못하게 */
+}

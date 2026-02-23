@@ -1,0 +1,31 @@
+/* App.css */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* 공통 wrapper: 페이지 콘텐츠 + 푸터 */
+.app-content-wrapper {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;      /* 중앙 정렬 */
+  padding: 0 40px;     /* 헤더 패딩과 동일 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/* Routes 내 페이지 콘텐츠 */
+.app-page-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

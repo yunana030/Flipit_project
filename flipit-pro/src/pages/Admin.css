@@ -1,0 +1,87 @@
+/* src/styles/admin.css 또는 기존 CSS 파일에 추가 */
+
+/* 전체 컨테이너: Flexbox를 사용하여 사이드바와 콘텐츠 영역을 나란히 배치 */
+.admin-container {
+    display: flex;
+    min-height: 100vh; /* 화면 전체 높이 사용 */
+    width: 1200px; /* 최대 너비 제한 */
+    margin: 0 auto;
+    border: 1px solid #e0e0e0; /* 전체 경계선 (선택 사항) */
+}
+
+/* 1. 사이드바 스타일 */
+.admin-sidebar {
+    width: 220px;
+    padding: 20px 0;
+    border-right: 1px solid #e0e0e0;
+    background-color: #f8f9fa; /* 배경색 */
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.sidebar-title {
+    color: #343a40;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column; /* 버튼을 세로로 배치 */
+    gap: 10px;
+    padding: 0 15px;
+}
+
+.nav-button {
+    padding: 12px 15px;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s, color 0.2s;
+    border-radius: 4px;
+}
+
+.nav-button:hover {
+    background-color: #e9ecef;
+}
+
+/* 활성화된 버튼 */
+.nav-button.active {
+    background-color: #54a558; /* 주 색상 */
+    color: white;
+    font-weight: bold;
+}
+
+/* 2. 콘텐츠 영역 스타일 */
+.admin-content-area {
+    flex-grow: 1;
+    min-width: 700px; /* 최소 너비 고정 */
+    max-width: 980px; /* 최대 너비 제한 */
+    padding: 20px 40px;
+    background-color: white;
+
+    align-items: stretch;
+}
+
+.content-title {
+    color: #696969;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.content-divider {
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.user-management,
+.card-management {
+    flex: 1; /* 동일 비율로 영역 차지 */
+    min-height: 500px; /* 적어도 이만큼 공간 확보 */
+}

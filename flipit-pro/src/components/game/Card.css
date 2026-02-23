@@ -1,0 +1,84 @@
+.card {
+  width: 180px;
+  height: 250px;
+  perspective: 1000px;
+  position: relative;
+  border-radius: 12px;
+  /* overflow: hidden; */
+}
+
+.card-wrapper {
+  display: flex;           /* 가로로 나열 */
+  flex-wrap: wrap;         /* 여러 줄로 넘어가도록 */
+  gap: 2rem;               /* 카드 사이 간격 (원하는 px로 조정 가능) */
+  justify-content: center; /* 가운데 정렬 */
+}
+
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden; /* 뒤집혔을 때 뒷면 안 보이게 */
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+}
+
+/* 카드 앞면 */
+.card-front {
+  transform: rotateY(0deg); /* 기본 상태: 정면 */
+  z-index: 2;
+}
+.card-border {
+  width: 100%;
+  height: 100%;
+  border: 6.5px solid #759970; /* 바깥 테두리 */
+  border-radius: 18px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-inner {
+  width: calc(100% - 20px);   /* border 두께만큼 안쪽 여백 */
+  height: calc(100% - 20px);
+  border-radius: 12px;        /* 바깥 테두리와 동일 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* background-color: rgba(172, 209, 37, 0.3);   */
+
+  background-image: url("/images/배경후보6.jpg");
+  background-size: cover;        /* 영역에 맞게 채움 */
+  background-position: center; 
+
+  
+}
+
+.card-front-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;         /* 흰 영역 안에서 비율 유지하며 전체 채움 */
+  border-radius: 12px;
+}
+
+/* 카드 뒷면 (패턴이 있는 쪽) */
+.card-back {
+  background-image: url("/images/card_back4.png");
+  background-size: cover;
+  background-position: center;
+  transform: rotateY(180deg); /* 기본 상태: 뒤집혀 있음 */
+}
+
+/* 뒤집기 효과 */
+.card.flipped .card-front {
+  transform: rotateY(180deg);
+}
+.card.flipped .card-back {
+  transform: rotateY(0deg);
+}

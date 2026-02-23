@@ -1,0 +1,302 @@
+.home-page {
+  width: 100%;
+  height: 700px;     /* sky 영역 크기 */
+  flex-shrink: 0;     /* footer 침범 방지 */
+  position: relative;
+  overflow: hidden;   /* 안전 */
+}
+
+.carousel-area{
+  position: relative;
+  width: 100%;
+  height: 650px;
+}
+
+.carousel-wrapper {
+  width: 100%;
+  height: 650px;
+  perspective: 1800px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  transform-style: preserve-3d;
+}
+
+
+.carousel-dome {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.carousel-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  transition: transform 1s;
+  margin-left: -100px; /* 카드 너비 절반 */
+  margin-top: -140px; /* 카드 높이 절반 */
+  width: 200px;
+  height: 280px;
+}
+
+
+
+.arrow.left svg {
+  transform: rotate(180deg);  /* 좌측 삼각형 */
+  font-size: 32px;
+  color: #4a8560;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.arrow.right svg {
+  transform: rotate(0deg);    /* 우측 삼각형 */
+  font-size: 32px;
+  color: #4a8560;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.arrow:hover svg {
+  color: #22c55e;
+  transform: scale(1.1) rotate(var(--rotate, 0deg));
+}
+
+.arrow:active svg {
+  transform: scale(0.9) rotate(var(--rotate, 0deg));
+}
+
+.triangle-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+
+.triangle-icon {
+  font-size: 32px;
+  color: #4a8560;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.prev-icon {
+  transform: rotate(180deg); /* 좌측 삼각형 */
+}
+
+.next-icon {
+  transform: rotate(0deg); /* 우측 삼각형 */
+}
+
+.triangle-btn:hover .triangle-icon {
+  color: #22c55e;
+  transform: scale(1.1) rotate(var(--rotate, 0deg));
+}
+
+.triangle-btn:active .triangle-icon {
+  transform: scale(0.9) rotate(var(--rotate, 0deg));
+}
+
+
+/* ========================================================== */
+/* 1. 하늘 */
+.sky-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+.sky-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 2. 중앙 뒤 조형물 */
+.behind-structures {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(-700px); /* 돔 중심축으로 이동 */
+  z-index: 1; /* 돔은 4 → 조형물은 자연스럽게 뒤 */
+  transform-style: preserve-3d;
+}
+
+.behind-structures img {
+  width: 35vw;
+  height: auto;
+  pointer-events: none;
+}
+
+/* 3. 떠다니는 조형물 */
+.floating-objects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+/* 기본 스타일 */
+.floating-objects img {
+  position: absolute;
+  width: 180px;
+  object-fit: contain;
+  animation: floatY 6s ease-in-out infinite alternate,
+             floatX 8s ease-in-out infinite alternate;
+  opacity: 0.95;
+  user-select: none;
+}
+
+/* 위치 개별 조정 */
+.obj1 { 
+  width: 200px !important;
+  top: 49%; left: 2%; transform: translate(-50%, -50%); }
+
+.obj2 { 
+  width: 120px !important;
+  top: 2%; right: 27%; transform: translate(50%, -50%); }
+
+.obj3 { 
+  width: 120px !important;
+  bottom: 12%; left: 32%; transform: translate(-50%, 50%); }
+
+.obj4 { 
+  width: 160px !important;
+  bottom: 63%; right: 2%; transform: translate(50%, 50%); }
+
+.obj5 { 
+  width: 200px !important;
+  top: 5%; left: 9%; transform: translate(-50%, -50%); }
+
+.obj6 {
+  width: 300px!important;
+  height: auto;       /* 종횡비 유지 */
+  max-width: none;    /* 부모 제한 해제 */
+  object-fit: contain; /* 필요 없으면 제거 */
+  bottom: 8%;
+  right: 3%;
+  transform: translate(-50%, -50%);
+}
+
+.obj7{
+  width: 250px !important;
+  height: auto;
+  top: 15%;
+  left: 4%;
+}
+
+.obj8{
+  width: 200px !important;
+  height: auto;
+  bottom: 23%;
+  left: 55%;
+}
+
+.obj9{
+  width: 300px !important;
+  height: auto;
+  left: 28%;
+  top: 0%;
+}
+
+.obj10 {
+  width: 300px !important;
+  right: 18%;
+  top: -1%;
+}
+
+.obj11{
+  width: 100px !important;
+  right: 33%;
+  bottom: 20%;
+  transform: scaleX(-1);
+}
+
+.obj12 {
+  width: 220px !important;
+  height: auto;
+  top: 14%;
+  left: 38%;
+}
+
+.obj13 {
+  bottom: 20%;
+  right: 12%;
+}
+
+.obj14 {
+  bottom: 33%;
+  left: 20%;
+}
+
+/* .obj6 { top: 6%; left: 10%; transform: translate(-50%, -50%); } */
+
+/* ---------------------------------------------------
+   4. 둥둥 떠다니는 효과
+--------------------------------------------------- */
+@keyframes floatY {
+  0%   { transform: translate(-50%, -50%) translateY(-30px); }
+  50%  { transform: translate(-50%, -50%) translateY(30px); }
+  100% { transform: translate(-50%, -50%) translateY(-30px); }
+}
+
+@keyframes floatX {
+  0%   { transform: translateX(-15px); }
+  50%  { transform: translateX(15px); }
+  100% { transform: translateX(-15px); }
+}
+
+
+/* 중앙 조형물: 돔의 정확한 중심 */
+.center-sculpture {
+  position: absolute;
+  /* top: 50%;
+  left: 50%; */
+  transform: translate(-50%, -50%) translateZ(-200px);  /* 중요 */
+  width: 350px;
+  z-index: 2;
+  pointer-events: none;
+  left: 40%;
+  top: 65%;
+}
+
+
+.center-sculpture img {
+  width: 700px;
+  height: auto;
+  object-fit: contain;
+}
+
+
+
+/* GameStart버튼 */
+.start-button {
+  all: unset;
+  width: 180px;
+  height: 60px;
+  background-color: #1ea958;
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+
+  position: fixed;   /* fixed로 화면 기준 */
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;     /* 최상위 */
+}

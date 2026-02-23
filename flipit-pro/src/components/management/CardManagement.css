@@ -1,0 +1,186 @@
+/* -------------------------------------------
+ * 📂 CardManagement.css: 카드 관리 페이지 최종 스타일
+ * - 테이블 관련 스타일 제거 (갤러리 뷰만 사용)
+ * - 명패 스타일 및 호버 효과 적용
+ * ------------------------------------------- */
+
+/* === 1. 기본 레이아웃 및 제목 === */
+
+.card-management {
+    padding: 20px;
+    background-color: #f8f9fa; /* 배경색을 살짝 주어 영역 구분 */
+    min-height: 80vh;
+}
+
+.card-list-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #343a40;
+    border-bottom: 3px solid #28a745; /* 강조된 밑줄 */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* === 2. 카드 액션 (등록 버튼) === */
+
+.card-actions {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.register-button {
+    /* 아이콘을 위한 Flex 정렬 */
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    
+    padding: 10px 18px;
+    background-color: #28a745; /* 녹색 계열 */
+    color: white;
+    border: none;
+    border-radius: 25px; /* 둥근 버튼 */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.register-button:hover {
+    background-color: #218838;
+}
+
+/* 💡 CSS ::before로 ➕ 아이콘 자동 삽입 */
+.register-button::before {
+    content: '➕';
+    font-size: 1.1em;
+    line-height: 1;
+}
+
+
+/* === 4. 개별 카드 아이템 및 호버 효과 === */
+
+.admin-card-item-wrapper {
+    width: 180px; 
+    margin-bottom: 30px; 
+    background-color: transparent;
+    border-radius: 12px; 
+    transition: box-shadow 0.3s ease;
+}
+
+.admin-card-item-wrapper:hover {
+    transform: none; 
+    box-shadow: none; 
+}
+
+/* === 5. 카드 이름 (명패 스타일) 및 메타 정보 === */
+
+.admin-card-meta {
+    padding: 10px 5px 0 5px; 
+    text-align: center;
+}
+/* 🔥 추가: 카드 컴포넌트와 이름 명패만 타겟팅하여 움직임 적용 */
+.admin-card-item-wrapper:hover .card,
+.admin-card-item-wrapper:hover .card-display-name {
+    transform: translateY(-5px); /* -5px 위로 이동 */
+}
+
+.card-display-name {
+    /* 명패 디자인 */
+    background-color: #e9ecef; /* 약간 어두운 배경 */
+    border: 1px solid #dcdcdc; 
+    border-radius: 5px; 
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05); /* 약간의 눌린 듯한 입체감 */
+    
+    /* 폰트 강조 */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-weight: 700; 
+    font-size: 1.05em; 
+    color: #343a40; 
+    
+    /* 배치 */
+    margin: 0 auto 10px auto; 
+    padding: 6px 10px; 
+    width: 90%; 
+    height: auto; 
+    
+    /* 긴 이름 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* === 6. 액션 버튼 (삭제) === */
+
+.card-admin-actions {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: 5px; 
+    padding-bottom: 10px; /* 아이템 하단 패딩 */
+}
+
+.delete-button {
+    background-color: #dc3545; /* 빨간색 계열 */
+    color: white;
+    border: none;
+    font-size: 0.8em; 
+    padding: 6px 15px; 
+    border-radius: 20px; 
+    cursor: pointer;
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c82333; 
+}
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}
+
+
+.pagination {
+  display: flex;             /* 가로로 정렬 */
+  justify-content: center;   /* 가운데 정렬 */
+  align-items: center;       /* 세로 가운데 */
+  gap: 16px;                 /* 버튼 사이 간격 */
+  margin: 16px 0;
+}
+.triangle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.triangle-icon {
+  font-size: 32px;
+  color: #4a8560;
+  transition: color 0.2s, transform 0.2s;
+}
+
+/* 좌측 삼각형 */
+.triangle-icon.prev-icon {
+  transform: rotate(180deg); /* 좌우 반전 */
+}
+
+/* hover 효과 */
+.triangle-btn:hover .triangle-icon {
+  color: #22c55e;
+  transform: scale(1.1) rotate(var(--rotate, 0deg));
+}
+
+/* 클릭 시 살짝 눌리는 느낌 */
+.triangle-btn:active .triangle-icon {
+  transform: scale(0.9) rotate(var(--rotate, 0deg));
+}
+
+/* 페이징 전체 위치 */

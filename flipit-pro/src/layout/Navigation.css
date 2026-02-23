@@ -1,0 +1,152 @@
+.navigation {
+  position: relative; 
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+}
+
+.navigation-inner {
+  width: 100%;
+  max-width: 1540px;
+  margin: 10px auto; 
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px; 
+  align-items: center;
+  background-color: #dbeac17c;
+}
+
+.navigation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}
+
+/* 로고 */
+.logo {
+  font-family: 'Baloo_Chettan-Regular', Helvetica;
+  font-size: 36px;
+  font-weight: normal;
+  color: #008db4;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+/* nav wrapper */
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* 메뉴 그룹 전체 */
+.nav-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 왼쪽 그룹과 로그인 버튼 그룹 간격 확보 */
+  width: 100%;                   /* 폭 100%로 밑줄 길이와 동일하게 */
+  margin: 0;
+  padding: 0;
+  gap:5.5rem;
+}
+
+/* 왼쪽 메뉴 그룹 */
+.nav-group {
+  display: flex;
+  gap: 24px;   /* 메뉴 아이템 사이 간격 */
+}
+
+/* 오른쪽 로그인 버튼 그룹 */
+.login-group {
+  display: flex;
+  align-items: center;
+  gap:1.1rem;
+}
+
+/* 메뉴 아이템 */
+.nav-item {
+  font-family: 'Inter-Medium', Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 홈 아이콘 */
+.home-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #ffd76a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* 로그인 버튼 */
+.login-button {
+  all: unset;
+  box-sizing: border-box;
+  width: 80px;
+  height: 40px;
+  background-color: #F9B481;
+  color: #fff;
+  font-family: 'Inter-ExtraBold', Helvetica;
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 헤더 밑줄 */
+.header-line {
+  width: 90%;
+  height: 5px;
+  background-color: #C9C9C9;
+  margin: 0 auto;
+}
+
+.show-name{
+  font-weight: 600;
+}
+
+.logo-img {
+  width: 180px;
+  height: 50px;
+  cursor: pointer;
+}
+
+
+/* 호버속성추가 */
+
+.nav-item {
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-item:hover {
+  background-color: #FCEFC0;  /* 호버 색상 */
+  color: #000000;
+}
+
+/* 클릭하거나 현재 페이지인 경우 */
+.nav-item.active {
+  background-color: #ffe06e;
+  color: white;
+  font-weight: bold;
+}

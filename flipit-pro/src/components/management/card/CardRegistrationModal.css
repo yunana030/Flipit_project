@@ -1,0 +1,75 @@
+.card-reg-backdrop {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;  /* 추가 */
+    bottom: 0 !important; /* 추가 */
+    width: 100vw !important;
+    height: 100vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: rgba(0,0,0,0.6) !important;
+    z-index: 9999 !important;
+    margin: 0 !important;     /* 부모 margin 영향 제거 */
+    padding: 0 !important;    /* 부모 padding 영향 제거 */
+}
+
+.card-reg-content {
+  background: #fff !important;
+  padding: 20px !important;
+  border-radius: 12px !important;
+  width: 420px !important;
+  position: relative !important;
+}
+
+
+/* 헤더 */
+.card-reg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.card-reg-title { font-size: 20px; font-weight: 600; }
+.card-reg-close-btn {
+    background: #eee;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.card-reg-close-btn:hover { color: #333; }
+
+/* 카드 미리보기 */
+.card-reg-preview-area {
+    display: flex; flex-direction: column; align-items: center; padding: 10px 0;
+}
+.card-reg-preview-area .card { margin-bottom: 15px; max-width: 150px; }
+.card-reg-nameplate {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+    width: 150px;
+}
+
+/* 액션 버튼 */
+.card-reg-actions {
+    display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px;
+}
+.card-reg-submit-btn {
+    background-color: #28a745; color: white; padding: 10px 20px; border-radius: 6px; border: none; cursor: pointer; font-weight: bold;
+}
+.card-reg-submit-btn:hover { background-color: #218838; }
+.card-reg-close-btn { background-color: #6c757d; color: white; }
+.card-reg-close-btn:hover { background-color: #5a6268; }
+
+/* 폼 */
+.registration-form .form-group { margin-bottom: 15px; }
+.registration-form label { display: block; font-weight: 600; margin-bottom: 5px; color: #555; }
+.registration-form input { width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; }
+.registration-form input:focus { border-color: #28a745; outline: none; }
