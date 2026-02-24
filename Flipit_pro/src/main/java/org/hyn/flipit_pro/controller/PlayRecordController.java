@@ -26,7 +26,7 @@ public class PlayRecordController {
     public ResponseEntity<List<PlayRecordDTO>> getAllUserRanks() {
         return ResponseEntity.ok(
             playRecordService.getAllRecordsSorted().stream()
-                .map(this::convertToDTO)
+                .map(PlayRecordDTO::from)
                 .collect(Collectors.toList())
         );
     }
@@ -54,7 +54,7 @@ public class PlayRecordController {
             return ResponseEntity.notFound().build();
         }
         
-        return ResponseEntity.ok(convertToDTO(record));
+        return ResponseEntity.ok(PlayRecordDTO.from(record));
     }
     // 4. 게임 진행 상태 조회
     @GetMapping("/progress")
@@ -67,16 +67,4 @@ public class PlayRecordController {
         return ResponseEntity.ok(playRecordService.getGameProgressByUsername(auth.getName()));
     }
 
-    // DTO 변환 헬퍼
-    private PlayRecordDTO convertToDTO(PlayRecord record) {
-        if (record == null || record.getUser() == null) return null;
-        return new PlayRecordDTO(
-            record.getUser().getId(),
-            record.getUser().getUsername(),
-            record.getLaststage(),
-            record.getBeststage(),
-            record.getClickCount(),
-            record.getCreateTime()
-        );
-    }
 }

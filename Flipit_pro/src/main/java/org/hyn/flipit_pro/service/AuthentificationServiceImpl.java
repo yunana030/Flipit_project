@@ -60,7 +60,7 @@ public class AuthentificationServiceImpl implements AuthentificationService {
         int bestStage = playRecordOpt.map(PlayRecord::getBeststage).orElse(0);
         int clickCount = playRecordOpt.map(PlayRecord::getClickCount).orElse(0);
 
-        // 💡 확인용 로그 (여기 숫자가 0이 아닌지 서버 콘솔에서 확인!)
+        // 확인용 로그 
         log.info("로그인 유저: {}, 스테이지: {}, 클릭수: {}", user.getUsername(), bestStage, clickCount);
 
         // 4. 최종적으로 UserDTO를 만들어 리턴

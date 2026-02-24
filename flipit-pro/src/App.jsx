@@ -101,7 +101,7 @@ function App() {
                 : <Navigate to="/" replace /> // 관리자가 아니면 메인으로 쫓겨남!
             } 
           />
-          <Route path="/rank" element={isLoggedIn ? <Rank /> : <Navigate to="/" replace />} />
+          <Route path="/rank" element={<Rank />} />
           <Route path="/oauth/callback/kakao" element={<Kakao />} />
         </Routes>
       </div>

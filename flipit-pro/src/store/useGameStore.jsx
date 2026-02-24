@@ -31,12 +31,26 @@ export const useGameStore = create((set, get) => ({
       case "TIME+":
         set((state) => ({ timeLeft: state.timeLeft + 5 }));
         break;
+
       case "SHOW ALL":
-        set({ cards: cards.map(c => c.matched ? c : { ...c, isFlipped: false }) });
+        const currentlySelectedIds = get().selectedCards.map(c => c.id);
+        // 모든 카드를 앞면으로 보여줌
+        set({ cards: cards.map(c => ({ ...c, isFlipped: false })) });
+
         setTimeout(() => {
-          set({ cards: get().cards.map(c => c.matched ? c : { ...c, isFlipped: true }) });
+          set((state) => ({
+            cards: state.cards.map(c => {
+              // 이미 매칭된 카드이거나, 아이템 사용 전 유저가 클릭했던 카드는 앞면(false) 유지
+              if (c.matched || currentlySelectedIds.includes(c.id)) {
+                return { ...c, isFlipped: false };
+              }
+              // 나머지만 다시 뒷면(true)으로
+              return { ...c, isFlipped: true };
+            })
+          }));
         }, 1000);
         break;
+
       case "REVEAL ONE":
         const unflipped = cards.filter(c => c.isFlipped && !c.matched);
         if (unflipped.length === 0) return;
@@ -51,9 +65,15 @@ export const useGameStore = create((set, get) => ({
 
   // 카드 클릭 및 매칭 로직
   handleCardClick: (id) => {
+    // 순서 중요! get()을 먼저 호출해서 현재 상태를 가져와야
     const { cards, isGameStarted, isComparing, selectedCards, incClick } = get();
+
+    // 게임 중이 아니거나 이미 비교 중이면 리턴
     if (!isGameStarted || isComparing) return;
+
     const clickedCard = cards.find(c => c.id === id);
+    
+    // 이미 매칭된 카드이거나, 이미 앞면(isFlipped: false)인 카드는 클릭 무시 (false가 앞면, true가 뒷면)
     if (!clickedCard || clickedCard.matched || !clickedCard.isFlipped) return;
 
     incClick();
@@ -63,27 +83,35 @@ export const useGameStore = create((set, get) => ({
     const newSelection = [...selectedCards, clickedCard];
     set({ selectedCards: newSelection });
 
+    // 두 장이 선택되었을 때 매칭 검사
     if (newSelection.length === 2) {
-      set({ isComparing: true });
+      set({ isComparing: true }); // 추가 클릭 방지 시작
       const [first, second] = newSelection;
+
       if (first.front === second.front) {
+        // 일치할 때
         setTimeout(() => {
           set((state) => ({
             cards: state.cards.map(c =>
-              c.id === first.id || c.id === second.id ? { ...c, isFlipped: false, matched: true } : c
+              c.id === first.id || c.id === second.id 
+                ? { ...c, isFlipped: false, matched: true } 
+                : c
             ),
             selectedCards: [],
-            isComparing: false
+            isComparing: false // 클릭 방지 해제
           }));
         }, 500);
       } else {
+        // 불일치할 때
         setTimeout(() => {
           set((state) => ({
             cards: state.cards.map(c =>
-              c.id === first.id || c.id === second.id ? { ...c, isFlipped: true } : c
+              c.id === first.id || c.id === second.id 
+                ? { ...c, isFlipped: true } 
+                : c
             ),
             selectedCards: [],
-            isComparing: false
+            isComparing: false // 클릭 방지 해제
           }));
         }, 800);
       }

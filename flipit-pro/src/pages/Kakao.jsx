@@ -14,7 +14,7 @@ const Kakao = () => {
     if (code && !hasRequested.current) {
       hasRequested.current = true;
       
-      console.log("🚀 백엔드에 코드를 딱 한 번만 보냅니다!");
+      console.log("백엔드에 코드를 딱 한 번만 보냅니다!");
 
       api.post(`/api/authentication/kakao?code=${code}`)
         .then((res) => {
