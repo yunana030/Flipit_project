@@ -16,4 +16,6 @@ public class GameProgressResponseDTO {
     private int maxStage;
     private boolean isLastStage;
 
+    
+
 }

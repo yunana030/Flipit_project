@@ -36,4 +36,8 @@ out/
 ### VS Code ###
 .vscode/
 
-.env
+### 비밀 설정 파일 제외 ###
+application-secret.properties
+
+# src/main/resources
+src/main/resources/application-secret.properties

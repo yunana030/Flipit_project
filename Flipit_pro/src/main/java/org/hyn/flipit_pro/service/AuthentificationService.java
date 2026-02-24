@@ -5,4 +5,5 @@ import org.hyn.flipit_pro.dto.UserDTO;
 
 public interface AuthentificationService {
     UserDTO signInAndReturnJWT(User signInRequest);
+    UserDTO signInWithKakao(String code);
 }

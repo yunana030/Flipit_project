@@ -6,7 +6,6 @@ import { Card } from "../game/Card";
 import { FaPlay } from "react-icons/fa";
 
 
-
 export function CardManagement({ openModal }) {
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -33,7 +32,7 @@ export function CardManagement({ openModal }) {
             setCards(response.data);
         } catch (err) {
             console.error("카드 리스트 로드 실패:", err);
-            setError("❌ 카드 리스트 로드 실패. 서버/경로/권한(403)을 확인하세요.");
+            setError("카드 리스트 로드 실패. 서버/경로/권한(403)을 확인하세요.");
         } finally {
             setLoading(false);
         }
@@ -62,9 +61,6 @@ export function CardManagement({ openModal }) {
         alert("카드 삭제 실패. 서버/권한을 확인하세요.");
     }
     };
-
-    // 페이징 추가
-
 
     return (
     <div className="card-management">

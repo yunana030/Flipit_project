@@ -4,13 +4,11 @@ const Footer = () => {
   return (
     <footer className="footer-container">
       <div className="footer-wrapper">
-        {/* <div className="footer-line"></div> */}
-
         <div className="footer-inner">
 
           <div className="footer-logo">
           <img 
-            src="/images/메인로고1.png"  // public 폴더 안 이미지 경로
+            src="/images/메인로고1.png" 
             alt="FlipIt Footer Logo"
             className="footer-logo-img"
           />

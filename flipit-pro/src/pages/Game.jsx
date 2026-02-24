@@ -15,7 +15,7 @@ export const Game = () => {
   const navigate = useNavigate();
   const { token, user } = useAuthStore();
   
-  // 🚩 스토어에서 DB 기반 상태 가져오기
+  // 스토어에서 DB 기반 상태 가져오기
   const { currentStage, isLastStage, fetchProgress, saveProgress, setStageInfo } = useStageStore();
   const { 
     cards, timeLeft, clickCount, isGameStarted, itemsUsed,
@@ -34,7 +34,7 @@ export const Game = () => {
         axios.get(`${BASE_API_URL}/api/cards`, { headers: { Authorization: `Bearer ${token}` } })
       ]);
 
-      // 🚩 DB 응답에 포함된 isLastStage 정보를 스토어에 동기화
+      // DB 응답에 포함된 isLastStage 정보를 스토어에 동기화
       setStageInfo(stage, stageRes.data.isLastStage);
       
       startStage(stageRes.data, cardsRes.data);
@@ -59,7 +59,7 @@ export const Game = () => {
       const result = await saveProgress(username, currentStage, clickCount);
 
       if (result?.isLastStage || result?.lastStage) {
-        alert("🎉 모든 스테이지를 클리어하셨습니다!");
+        alert("모든 스테이지를 클리어하셨습니다!");
         navigate("/rank");
         return;
       }

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BASE_API_URL } from "../common/constants";
 import "./UserManagement.css"
 import { FaPlay } from "react-icons/fa";
-import api from '../../api/axios'
+import api from '../../api/api'
 
 const UserManagement = () =>{
     const [users, setUsers] = useState([]);

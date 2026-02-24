@@ -50,4 +50,12 @@ public class AuthentificationController {
             return new ResponseEntity<>("사용가능한 아이디입니다", HttpStatus.OK);
         }
     }
+
+    @PostMapping("/kakao")
+    public ResponseEntity<UserDTO> kakaoLogin(@RequestParam String code) {
+
+        UserDTO userDTO = authentificationService.signInWithKakao(code);
+
+        return ResponseEntity.ok(userDTO);
+    }
 }

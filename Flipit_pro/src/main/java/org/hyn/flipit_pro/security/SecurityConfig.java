@@ -38,17 +38,17 @@ public class SecurityConfig {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .authorizeHttpRequests(auth -> auth
-                    // 1. 누구나 접근 가능한 경로 (카드 관련 /api/cards/** 포함)
-                    .requestMatchers("/api/authentication/**", "/api/auth/**", "/api/public/**", "/api/stage/**", "/api/cards/**", "/api/play-record/**", "/error").permitAll()
-                    .requestMatchers("/api/user/me").permitAll() // 내 정보 확인은 허용
+                    // 최우선 허용 목록
+                    .requestMatchers("/error", "/favicon.ico").permitAll()
+                    .requestMatchers("/api/authentication/**", "/api/auth/**", "/api/public/**").permitAll()
+                    .requestMatchers("/api/stage/**", "/api/cards/**", "/api/play-record/**").permitAll()
+                    .requestMatchers("/api/user/me").permitAll()
 
-                    .requestMatchers("/api/admin/**").hasAuthority("ROLE_ADMIN") 
-                    .requestMatchers("/api/cards/admin/**").hasAuthority("ROLE_ADMIN")
+                    // 권한이 필요한 경로 (범위를 구체적으로)
+                    .requestMatchers("/api/admin/**", "/api/cards/admin/**").hasAuthority("ROLE_ADMIN")
+                    .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN") // 권한 체크 방식 확인 필요
 
-                    // 3. 그 외 일반 유저용
-                    .requestMatchers("/api/user/**").hasAnyAuthority("USER", "ADMIN")
-                    .requestMatchers("/api/**").authenticated()
-
+                    // 나머지는 인증 필요
                     .anyRequest().authenticated()
                 )
 

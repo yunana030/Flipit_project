@@ -10,7 +10,6 @@ export const useGameStore = create((set, get) => ({
   selectedCards: [],
   itemsUsed: { "TIME+": false, "SHOW ALL": false, "REVEAL ONE": false },
 
-  // --- 2. 액션 (Actions) ---
   // 타이머 작동
   tick: () => set((state) => ({ timeLeft: Math.max(0, state.timeLeft - 1) })),
   

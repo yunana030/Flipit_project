@@ -18,29 +18,19 @@ export const SignUp = () => {
   const [usernameMessage, setUsernameMessage] = useState(""); 
   const [isUsernameValid, setIsUsernameValid] = useState(false);
 
-  
-  // 모든 조건 체크 후 버튼 활성화 여부 결정
-// const isFormValid =
-//   formData.username.trim() !== "" &&
-//   formData.name.trim() !== "" &&
-//   formData.password !== "" &&
-//   formData.passwordCheck !== "" &&
-//   isUsernameValid &&
-//   passwordValid &&
-//   passwordMatch;
-const [isFormValid, setIsFormValid] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
 
-useEffect(() => {
-  setIsFormValid(
-    formData.username.trim() !== "" &&
-    formData.name.trim() !== "" &&
-    formData.password !== "" &&
-    formData.passwordCheck !== "" &&
-    isUsernameValid &&
-    passwordValid &&
-    passwordMatch
-  );
-}, [formData, isUsernameValid, passwordValid, passwordMatch]);
+  useEffect(() => {
+    setIsFormValid(
+      formData.username.trim() !== "" &&
+      formData.name.trim() !== "" &&
+      formData.password !== "" &&
+      formData.passwordCheck !== "" &&
+      isUsernameValid &&
+      passwordValid &&
+      passwordMatch
+    );
+  }, [formData, isUsernameValid, passwordValid, passwordMatch]);
 
 
 
@@ -129,7 +119,6 @@ useEffect(() => {
   };
 
 
-
   return (
     <div className="signup-page">
 
@@ -140,7 +129,7 @@ useEffect(() => {
       <img src="/images/particle5.png" className="particle particle5" />
       <img src="/images/particle6.png" className="particle particle6" />
 
-      {/* 1. 입구 식물 배경 */}
+      {/* 1. 식물 배경 */}
       <img
         src="/images/tunnelplant.png"
         alt="tunnel plant background"
@@ -154,7 +143,7 @@ useEffect(() => {
         className="signup-openbook"
       />
 
-      {/* 3. 회원가입 폼 영역 - 화면 중앙 고정 */}
+      {/* 3. 회원가입 폼 */}
       <div className="signup-form-wrapper">
         <form className="signup-form" onSubmit={handleSignup}>
           <header className="signup-header">
